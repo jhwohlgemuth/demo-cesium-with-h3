@@ -58,7 +58,7 @@ module.exports = (env, argv) => ({
     plugins: [
         new DashboardPlugin(),
         new DefinePlugin({CESIUM_BASE_URL: JSON.stringify('/')}),
-        new CopyWebpackPlugin([{from: join(source, workers),to: 'Workers'},{from: join(source, 'Assets'),to: 'Assets'},{from: join(source, 'Widgets'),to: 'Widgets'}])
+        new CopyWebpackPlugin([{from: join(source, workers), to: 'Workers'}, {from: join(source, 'Assets'), to: 'Assets'}, {from: join(source, 'Widgets'), to: 'Widgets'}])
     ],
     resolve: {
         modules: [resolve(__dirname, './src'), 'node_modules'],

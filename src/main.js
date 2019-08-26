@@ -4,7 +4,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import App from './components/App';
-import "cesium/Widgets/widgets.css";
+import 'cesium/Widgets/widgets.css';
 
 const name = 'My tomo application';
 const root = document.getElementById('root');
