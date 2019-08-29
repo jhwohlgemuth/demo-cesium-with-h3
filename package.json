@@ -72,6 +72,9 @@
         "testMatch": [
             "**/__tests__/**/*.(e2e|test).[jt]s?(x)"
         ],
+        "transform": {
+            "^.+\\.[t|j]sx?$": "babel-jest"
+        },
         "setupFilesAfterEnv": [
             "<rootDir>/__tests__/setup.js"
         ],
