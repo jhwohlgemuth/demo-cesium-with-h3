@@ -10,7 +10,7 @@ const workers = '../Build/Cesium/Workers';
 module.exports = (env, argv) => ({
     mode: argv.mode === 'production' ? 'production' : 'development',
     entry: [
-        'react-hot-loader/patch',
+        ...(argv.mode === 'production' ? [] : ['react-hot-loader/patch']),
         './src/main.js'
     ],
     devtool: (argv.mode === 'production') ? void 0 : 'eval-source-map',
@@ -68,7 +68,7 @@ module.exports = (env, argv) => ({
         modules: [resolve(__dirname, './src'), 'node_modules'],
         extensions: ['.js', '.jsx'],
         alias: {
-            'react-dom': '@hot-loader/react-dom',
+            ...(argv.mode === 'production' ? {} : {'react-dom': '@hot-loader/react-dom'}),
             cesium$: 'cesium/Cesium',
             cesium: 'cesium/Source'
         }
