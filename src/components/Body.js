@@ -5,6 +5,13 @@ import {geoToH3, h3ToGeoBoundary, h3IsValid} from 'h3-js';
 const {fromDegrees, fromElements, fromDegreesArray} = Cartesian3;
 const {fromCartesian} = Cartographic;
 
+Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIxN2I2N2RkNi1iZjIyLTRjMTItOWU3NS01YTFhYzkxZmE2ZjgiLCJpZCI6MTUxMTYsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1NjcxMjgyMzV9.nEwUTSZ5eViYDZpFGv0r_4y_feyu_rECyNS0uEtsSz4'; // eslint-disable-line max-len
+
+const MAX_LAT = 90;
+const MAX_LON = 180;
+const LATITUDE_RANGE = [-MAX_LAT, MAX_LAT];
+const LONGITUDE_RANGE = [-MAX_LON, MAX_LON];
+
 function* range(max) {
     let index = 0;
     while (index < max) {
@@ -12,8 +19,8 @@ function* range(max) {
     }
 }
 export const random = (min = 0, max = 1) => Math.random() * (max - min) + min;
-const randomLatitude = () => Number(random(-45, 45).toFixed(2));
-const randomLongitude = () => Number(random(-180, 180).toFixed(2));
+const randomLatitude = () => Number(random(...LATITUDE_RANGE).toFixed(2));
+const randomLongitude = () => Number(random(...LONGITUDE_RANGE).toFixed(2));
 const generateRandomPositions = n => [...range(n)].map(() => fromDegrees(randomLongitude(), randomLatitude(), 0));
 const randomPositions = generateRandomPositions(1000);
 
@@ -21,6 +28,8 @@ const Body = () => {
     let viewer;
     const [index, setIndex] = useState('');
     const [selected, setSelected] = useState([]);
+    const TRANSPARENCY = 0.2;
+    const material = Color.CYAN.withAlpha(TRANSPARENCY);
     const getBoundary = index => h3ToGeoBoundary(index)
         .map(([lat, lon]) => [lon, lat])
         .reduce((list, latLon) => [...list, ...latLon], []);
@@ -54,8 +63,14 @@ const Body = () => {
             }
         }
     };
-    return <Viewer full animation={false} infoBox={false} selectionIndicator={false} timeline={false} ref={e => viewer = e ? e.cesiumElement : undefined}>
+    return <Viewer
+        full
+        animation={false}
+        infoBox={false}
+        selectionIndicator={false}
+        timeline={false} ref={e => viewer = e ? e.cesiumElement : undefined}>
         {randomPositions.map((position, index) => <Entity
+            key={index}
             description={index}
             onClick={onClick}
             position={position}
@@ -66,7 +81,7 @@ const Body = () => {
         />)}
         {h3IsValid(index) && <Entity
             description="H3 Hexagon"
-            polygon={{hierarchy: fromDegreesArray(getBoundary(index)), material: Color.CYAN.withAlpha(0.2)}}
+            polygon={{hierarchy: fromDegreesArray(getBoundary(index)), material}}
         />}
     </Viewer>;
 };
