@@ -64,9 +64,11 @@ const Body = () => {
         }
     };
     return <Viewer
-        full
+        style={{position: 'absolute', top: '60px', left: 0, right: 0, height: 'calc( 100% - 30px )'}}
         animation={false}
+        homeButton={false}
         infoBox={false}
+        navigationHelpButton={false}
         selectionIndicator={false}
         timeline={false} ref={e => viewer = e ? e.cesiumElement : undefined}>
         {randomPositions.map((position, index) => <Entity

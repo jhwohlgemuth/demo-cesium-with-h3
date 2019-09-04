@@ -1,14 +1,16 @@
 /* This comment will be removed by cssnano */
-@import "./fonts.css";
+@import "github-corner";
 body {
-    background-color: white;
-    color: #777;
+    background-color: black;
+    color: white;
+    position: relative;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 2rem 0 4rem 0;
+    margin: 0;
+    height: 90vh;
 }
 a {
     position: relative;
-    color: #be2edd;
+    color: cyan;
     cursor: pointer;
     text-decoration: none;
 }
@@ -19,7 +21,7 @@ a::before {
     bottom: 0;
     width: 100%;
     height: 2px;
-    background-color: #be2edd;
+    background-color: cyan;
     transform-origin: center;
     transform: translate(-50%, 0) scaleX(0);
     transition: transform 0.3s ease-in-out;
@@ -29,20 +31,22 @@ a:hover::before {
 }
 footer {
     bottom: 0;
+    line-height: 30px;
     position: fixed;
     text-align: center;
     width: 100%;
-    & > p {
-        line-height: 0.5rem;
-    }
 }
 header {
-    margin: 1rem;
-    & > p {
-        margin: 0;
-    }
-    & p:first-child {
-        font-weight: bold;
+    background-color: black;
+    height: 60px;
+    line-height: 10px;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    width: 100%;
+    & p:last-child {
+        color: #CCC;
+        font-size: 0.9rem;
     }
 }
 section {
@@ -54,6 +58,12 @@ section {
         width: 500px;
     }
 }
+#root {
+    height: 100%;
+}
 .heart {
     color: red;
+}
+.cesium-widget-credits.cesium-widget-credits.cesium-widget-credits.cesium-widget-credits.cesium-widget-credits {
+    display: none;
 }
