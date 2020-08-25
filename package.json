@@ -87,7 +87,7 @@
         "@hot-loader/react-dom": "^16.9.0",
         "cesium": "^1.60.0",
         "copy-webpack-plugin": "^5.0.4",
-        "css-loader": "^3.2.0",
+        "css-loader": "^4.0.0",
         "h3-js": "^3.5.0",
         "prop-types": "^15.7.2",
         "react": "^16.9.0",
