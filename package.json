@@ -93,7 +93,7 @@
         "react": "^16.9.0",
         "react-dom": "^16.9.0",
         "resium": "^1.7.0",
-        "style-loader": "^1.0.0",
+        "style-loader": "^2.0.0",
         "url-loader": "^2.1.0",
         "wouter": "^2.2.1"
     },
