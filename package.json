@@ -45,7 +45,7 @@
         "cssnano": "^4.1.10",
         "del-cli": "^2.0.0",
         "eslint": "^6.2.2",
-        "eslint-config-omaha-prime-grade": "^11.0.4",
+        "eslint-config-omaha-prime-grade": "^14.0.0",
         "eslint-plugin-jsx-a11y": "^6.2.3",
         "eslint-plugin-react": "^7.14.3",
         "jest": "^24.9.0",
